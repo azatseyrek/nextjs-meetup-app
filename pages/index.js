@@ -1,3 +1,4 @@
+import Layout from '../components/layout/Layout';
 import MeetupList from '../components/meetups/MeetupList';
 
 const DUMMY_MEETUPS = [
@@ -5,14 +6,34 @@ const DUMMY_MEETUPS = [
     id: 'm1',
     title: 'A first meetup',
     image:
-      'https://web-assets.bcg.com/dims4/default/7dc08d2/2147483647/strip/true/crop/2868x1620+6+0/resize/701x396!/format/webp/quality/90/?url=http%3A%2F%2Fboston-consulting-group-brightspot.s3.amazonaws.com%2F33%2F27%2F5f1dffb148eca51da46706bf6da9%2Fbcg-istanbul-office.jpg',
-    adress: 'test adress 5, 123 City / 12',
-    description: 'this is a first meetup',
+      'https://pix10.agoda.net/hotelImages/13485364/0/90e1518cd3eaea6a3dfe8380b0f20693.jpg?ca=20&ce=1&s=1024x768',
+    adress: 'Istanbul adress 5, 123 City / 12',
+    description: 'this isthe Istanbul meetup',
+  },
+  {
+    id: 'm2',
+    title: 'A second meetup',
+    image:
+      'https://a.cdn-hotels.com/gdcs/production167/d32/70860665-c6b2-4b40-82e9-37b4bea5648e.jpg?impolicy=fcrop&w=800&h=533&q=medium',
+    adress: 'Paris adress 5, 123 City / 12',
+    description: 'this is the Paris meetup',
+  },
+  {
+    id: 'm3',
+    title: 'A third meetup',
+    image:
+      'https://a.cdn-hotels.com/gdcs/production151/d623/a8b25d0d-64d5-402f-99f5-a58f483c38c6.jpg?impolicy=fcrop&w=800&h=533&q=medium',
+    adress: 'Rome adress 5, 123 City / 12 Rome',
+    description: 'this is the Rome meetup',
   },
 ];
 
 const HomePage = () => {
-  return <MeetupList meetups={DUMMY_MEETUPS} />;
+  return (
+    <Layout>
+      <MeetupList meetups={DUMMY_MEETUPS} />
+    </Layout>
+  );
 };
 
 export default HomePage;
