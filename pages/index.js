@@ -1,4 +1,3 @@
-import {useEffect} from 'react';
 import MeetupList from '../components/meetups/MeetupList';
 
 const DUMMY_MEETUPS = [
@@ -28,13 +27,25 @@ const DUMMY_MEETUPS = [
   },
 ];
 
-const HomePage = () => {
-  const [loadedMeetups, setLoadedMeetups] = useState([]);
-  useEffect(() => {
-    // send http req and fetch data
-  }, []);
-
-  return <MeetupList meetups={DUMMY_MEETUPS} />;
+const HomePage = (props) => {
+  return <MeetupList meetups={props.meetups} />;
 };
+
+// ---Data Fetching for static pages--- (SSG)
+
+// asagida yazilan kodun amaci normlade bir fetch islemi yaptigimizda gelen data yi html icerisinde goremeyiz. Bunun icin iki yol (SSG , SSR) vardir birincisi asagida yazacagimiz gibi olan nextjs in sagladigi bir fonksyondur.
+
+// export isleme ile beraber bu fonksiyon sadece pages dizini altindaki ana index.js icerisinde yapilir.
+
+// SSG
+export async function getStaticProps() {
+  // fetch data from api
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS,
+    },
+    revalidate: 10 //SSG islemi genelde cok hizli degismeyen verilerde kullanilir ornegin blog sayfasi gibi. Ama illaki hizli degisen verilerde de kullanacagim diyorsan o halde revalidate i ekleyip degeri saniye cinsinden belirleyebilirsin. bu sayede islem belirledigin sure sonra tekrar regeneret edilecek. (istek varsa)
+  };
+}
 
 export default HomePage;
